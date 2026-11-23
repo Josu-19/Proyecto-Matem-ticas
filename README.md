@@ -9,4 +9,5 @@ quiz_matemáticas.py
 https://1drv.ms/u/c/65571daa235e497d/IQBAT1dQQ-x7S6Yp-tdKIrs1AUH0_Mpan_RI1mSU0JwhJZc?e=Zacx9C
 
 Preguntas_matematicas.cvs 
+
 https://1drv.ms/x/c/65571daa235e497d/IQBjYzyliEgZQ6SDTmf9TXo1ATAUZCBuRW1aSxNc9fkj4Hc?e=QXzpEm
