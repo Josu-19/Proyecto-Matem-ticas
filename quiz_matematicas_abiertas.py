@@ -1,5 +1,6 @@
 #quiz_matematicas
-#Josué Damián Salido
+#Josué Damián Salido Ortíz
+
 import tkinter as tk
 from tkinter import messagebox
 import random
@@ -24,10 +25,7 @@ ventana.title("Quiz de Matemáticas Aplicadas")
 ventana.geometry("560x430")
 ventana.columnconfigure(0, weight=1)
 
-
 def leer_preguntas():
-    # Formato de cada fila del CSV:  pregunta;respuesta;dificultad
-    # Si hay varias respuestas válidas, sepáralas con |   (ej: 0.5|1/2)
     carpeta = os.path.dirname(os.path.abspath(__file__))
     ruta = os.path.join(carpeta, "preguntas_matematicas.csv")
     try:
@@ -51,7 +49,7 @@ def leer_preguntas():
         try:
             dificultad = int(partes[-1])
         except ValueError:
-            continue  # encabezado o fila mal escrita
+            continue  
         if dificultad not in puntos_por_dificultad:
             continue
         respuesta = partes[-2].strip()
@@ -62,17 +60,13 @@ def leer_preguntas():
         lista.append([pregunta, respuestas_validas, dificultad])
     return lista
 
-
 def normalizar(texto):
-    # minúsculas, sin acentos, sin espacios sobrantes
     texto = texto.strip().lower()
     texto = unicodedata.normalize("NFD", texto)
     texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
     return " ".join(texto.split())
 
-
 def a_numero(texto):
-    # convierte "3,5", "3.5" o "7/2" a número; devuelve None si no es numérico
     texto = texto.strip().replace(",", ".")
     try:
         if "/" in texto:
@@ -135,7 +129,6 @@ def comenzar():
     vidas = vidas_iniciales
     pantalla_juego()
 
-
 def pantalla_juego():
     global entry_respuesta
     borrar_pantalla()
@@ -152,7 +145,6 @@ def pantalla_juego():
     entry_respuesta.bind("<Return>", lambda evento: responder())
     tk.Button(ventana, text="Responder", command=responder).grid(row=4, column=0, pady=20)
     aplicar_fondo()
-
 
 def responder():
     global numero, puntaje, correctas, vidas
@@ -176,7 +168,6 @@ def responder():
     else:
         pantalla_juego()
 
-
 def pantalla_resultados():
     borrar_pantalla()
     if vidas == 0:
@@ -188,7 +179,6 @@ def pantalla_resultados():
     tk.Label(ventana, text=texto, font=fuente, fg=color).grid(row=0, column=0, pady=40)
     tk.Button(ventana, text="Jugar de nuevo", command=pantalla_inicio).grid(row=1, column=0)
     aplicar_fondo()
-
 
 pantalla_inicio()
 ventana.mainloop()
